@@ -42,7 +42,7 @@ export default BlogDetails
 function Details({image, title, createdAt, message}) {
 
 
-    const content = JSON.parse(message)
+    const content = JSON?.parse(message)
     const contentState = convertFromRaw(content);
     const editorState = EditorState.createWithContent(contentState); 
     return(
