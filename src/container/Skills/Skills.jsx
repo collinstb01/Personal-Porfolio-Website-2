@@ -5,10 +5,11 @@ import ReactTooltip from 'react-tooltip';
 import { AppWrap, MotionWrap } from '../../wrapper';
 import './Skills.scss';
 import { useSelector } from 'react-redux';
+import Loader from "../../components/Loader"
 
 const Skills = () => {
   const [experiences, setExperiences] = useState([]);
-  const {posts}  = useSelector((state) => state.skill)
+  const {posts, loading}  = useSelector((state) => state.skill)
   console.log(posts)
 
   useEffect(() => {
@@ -19,6 +20,8 @@ const Skills = () => {
     <>
       <h2 className="head-text">Skills & Experiences</h2>
 
+      {
+        loading ? <Loader text="Skills and Experiences"/> :
       <div className="app__skills-container">
         <motion.div className="app__skills-list">
           {posts?.skillPost?.map((skill) => (
@@ -77,6 +80,7 @@ const Skills = () => {
           ))}
         </div>
       </div>
+    }
     </>
   );
 };

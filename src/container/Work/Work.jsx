@@ -6,6 +6,7 @@ import { AppWrap, MotionWrap } from '../../wrapper';
 import './Work.scss';
 import {useDispatch, useSelector} from "react-redux"
 import { getposts } from '../../features/SkillSlice';
+import Loader from '../../components/Loader';
 
 const Work = () => {
   const [works, setWorks] = useState([]);
@@ -13,7 +14,7 @@ const Work = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const dispatch = useDispatch()
-  const {posts} = useSelector((state) => state.skill)
+  const {posts, loading} = useSelector((state) => state.skill)
 
   
   useEffect(() => {
@@ -43,7 +44,11 @@ const Work = () => {
   return (
     <>
       <h2 className="head-text">My Creative <span>Portfolio</span> Section</h2>
-
+      {
+        loading ?
+         <Loader text="Projects"/>
+         :
+     <>
       <div className="app__work-filter">
         {filteredData.map((item, index) => (
           <div
@@ -65,6 +70,8 @@ const Work = () => {
           <One work={work} index={index} />
         ))}
       </motion.div>
+     </>
+}
     </>
   );
 };

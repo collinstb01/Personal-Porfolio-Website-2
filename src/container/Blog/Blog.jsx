@@ -8,12 +8,13 @@ import {useDispatch, useSelector} from "react-redux"
 import { getblogs } from '../../features/BlogSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import { Editor, EditorState, convertFromRaw } from 'draft-js';
+import Loader from "../../components/Loader"
 
 const Blog = () => {
   const [blogs_, setBlog] = useState([]);
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const dispatch = useDispatch()
-  const {blogs} = useSelector((state) => state.blog)
+  const {blogs, loading} = useSelector((state) => state.blog)
   console.log(blogs)
 
   useEffect(() => {
@@ -31,7 +32,9 @@ const Blog = () => {
   return (
     <>
       <h2 className="head-text">My <span>Blog</span> Section</h2>
-
+      {
+        loading ? <Loader text="Blogs" /> 
+        :
       <motion.div
         animate={animateCard}
         transition={{ duration: 0.5, delayChildren: 0.5 }}
@@ -41,6 +44,7 @@ const Blog = () => {
           <One {...work} index={index} key={index}/>
         ))}
       </motion.div>
+      }
     </>
   );
 };

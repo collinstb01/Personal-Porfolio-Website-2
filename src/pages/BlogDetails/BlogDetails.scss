@@ -25,18 +25,20 @@ img {
     width: 100%;
     margin-top: 10px;
 }
+// .blog__image::after {
+//     background-color: black;
+//     width: 200%;
+//     content: "";
+//     height: 200vh;
+//     top: 0px;
+//     left: 0px;
+//     z-index: 22;
+// }
 .blog__title {}
 
 .header {
     text-align: center;
     background: rgba(255, 255, 255, 0.25);
-    // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    // backdrop-filter: blur(4px);
-    // -webkit-backdrop-filter: blur(4px);
-    // border: 1px solid rgba(255, 255, 255, 0.18);
-    // position: sticky;
-    // top: 0;
-    // z-index: 2;
 
     span {
         color: var(--secondary-color);

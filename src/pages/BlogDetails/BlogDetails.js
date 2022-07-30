@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { Navbar } from '../../components'
@@ -26,7 +26,7 @@ const BlogDetails = () => {
             {
                 loading ? 
                 <div className="header">
-                    <h1>Loading....</h1>
+                    <span>Loading....</span>
                 </div>
                 :
                 <Details {...blog?.blogPost}/>
@@ -41,10 +41,17 @@ export default BlogDetails
 
 function Details({image, title, createdAt, message}) {
 
+    if (!message) {
+        return (
+            <span>Loading...</span>
+        )
+    }
+    // const [_mess, setMess] = useState("")
 
     const content = JSON?.parse(message)
     const contentState = convertFromRaw(content);
     const editorState = EditorState.createWithContent(contentState); 
+
     return(
         <div>
                 <div className="blog__image">
@@ -55,7 +62,9 @@ function Details({image, title, createdAt, message}) {
                    <p>Date: {createdAt.toString().slice(0, 10)} By Collins </p>
                    </div>
                    <div>
-                       <Editor editorState={editorState} readOnly={true} />
+                       {
+                           message && <Editor editorState={editorState} readOnly={true} />
+                       }
                    </div>
                 </div>
     )
