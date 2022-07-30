@@ -48,6 +48,8 @@ const Post = () => {
     
     /**  Experience Ending */
 
+    /**  Blog */
+
     const [editorState, setEditorState] = useState(
         () => EditorState.createEmpty(),
       );
@@ -66,7 +68,8 @@ const Post = () => {
 
         dispatch(createblog({...blogForm, message: content}))
     }
-    
+        /**  Blog Ending */
+
     console.log(skillData.category)
     return (
     <div>

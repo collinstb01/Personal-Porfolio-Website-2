@@ -1,0 +1,44 @@
+.container {
+    width: 100%;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 1rem;
+}
+.body {
+    width: 40%;
+    
+    @media (max-width: 900px) {
+        width: 70%;
+    }   
+    @media (max-width: 500px) {
+        width: 90%;
+    }   
+}
+img {
+    width: 100%;
+    border-radius: 15px;
+}
+.blog__image {
+    width: 100%;
+    margin-top: 10px;
+}
+.blog__title {}
+
+.header {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.25);
+    // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    // backdrop-filter: blur(4px);
+    // -webkit-backdrop-filter: blur(4px);
+    // border: 1px solid rgba(255, 255, 255, 0.18);
+    // position: sticky;
+    // top: 0;
+    // z-index: 2;
+
+    span {
+        color: var(--secondary-color);
+    }
+}

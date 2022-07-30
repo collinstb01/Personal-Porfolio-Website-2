@@ -43,7 +43,7 @@ const BlogSlice = createSlice({
   name: "skill",
   initialState: {
     blogs: [],
-    blog: [],
+    blog: {},
     message: "",
     loading: true
   },

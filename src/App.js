@@ -1,9 +1,10 @@
 import React from "react";
-import { About, Footer, Header, Skills, Work } from "./container";
+import { About, Blog, Footer, Header, Skills, Work } from "./container";
 import { Navbar } from "./components";
 import "./App.scss";
 import Post from "./pages/Post";
 import Auth from "./pages/Auth"
+import BlogDetails from "./pages/BlogDetails/BlogDetails"
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 const App = () => (
@@ -19,6 +20,7 @@ const App = () => (
               <About />
               <Work />
               <Skills />
+              <Blog />
               {/* <Testimonial />  */}
               <Footer />
             </div>
@@ -37,6 +39,14 @@ const App = () => (
           element={
             <div>
               <Post />
+            </div>
+          }
+        />
+         <Route
+          path="/blogdetails/:id"
+          element={
+            <div>
+              <BlogDetails />
             </div>
           }
         />
