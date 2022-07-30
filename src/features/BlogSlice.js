@@ -6,7 +6,7 @@ export const createblog = createAsyncThunk(
   async ({image, title, category, message}) => {
     try {
       const response = await axios.post(
-        "https://personalporfolio2.herokuapp.com//api/blogs/createblog",
+        "https://personalporfolio2.herokuapp.com/api/blogs/createblog",
         {image, title, category, message}
       );
       console.log(response.data);
@@ -20,7 +20,7 @@ export const createblog = createAsyncThunk(
 export const getblogs = createAsyncThunk("blogs/getblogs", async () => {
   try {
     const response = await axios.get(
-      "https://personalporfolio2.herokuapp.com//api/blogs/getblogs"
+      "https://personalporfolio2.herokuapp.com/api/blogs/getblogs"
     );
     console.log(response.data);
     return response.data;
@@ -31,7 +31,7 @@ export const getblogs = createAsyncThunk("blogs/getblogs", async () => {
 
 export const getblog = createAsyncThunk("blogs/getblog", async (id) => {
   try {
-    const response = await axios.get(`https://personalporfolio2.herokuapp.com//api/blogs/getblog/${id}`, id)
+    const response = await axios.get(`https://personalporfolio2.herokuapp.com/api/blogs/getblog/${id}`, id)
     
     console.log(response.data);
     return response.data;

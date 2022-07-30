@@ -6,7 +6,7 @@ export const createexperience = createAsyncThunk(
     async (experience) => {
         try {
         const response = await axios.post(
-        "https://personalporfolio2.herokuapp.com//api/experience/createexperience", experience)
+        "https://personalporfolio2.herokuapp.com/api/experience/createexperience", experience)
 
         console.log(response.data)
         return response.data
