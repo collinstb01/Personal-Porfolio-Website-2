@@ -6,7 +6,7 @@ export const createproject = createAsyncThunk(
   async (formData) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/post/createproject",
+        "https://personalporfolio2.herokuapp.com//api/post/createproject",
         formData
       );
       console.log(response.data);
@@ -22,7 +22,7 @@ export const createskill = createAsyncThunk(
   async (skillData) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/post/createskill",
+        "https://personalporfolio2.herokuapp.com//api/post/createskill",
         skillData
       );
       console.log(response.data);
@@ -36,7 +36,7 @@ export const createskill = createAsyncThunk(
 export const getposts = createAsyncThunk("skils/getposts", async () => {
   try {
     const response = await axios.get(
-      "http://localhost:5000/api/post/getposts"
+      "https://personalporfolio2.herokuapp.com//api/post/getposts"
     );
     console.log(response.data);
     return response.data;
@@ -49,7 +49,7 @@ export const login = createAsyncThunk(
   async ({ loginData, navigate }) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/user/login",
+        "https://personalporfolio2.herokuapp.com//api/user/login",
         loginData
       );
       console.log(response.data);
