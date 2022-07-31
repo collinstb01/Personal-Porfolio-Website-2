@@ -58,7 +58,7 @@ function Details({image, title, createdAt, message}) {
                    <img src={image} />
                    </div>
                    <div className="blog__title">
-                   <h1 style={{fontSize: "25px"}}>{title}</h1>
+                   <h1 style={{fontSize: "21px"}}>{title}</h1>
                    <p>Date: {createdAt.toString().slice(0, 10)} By Collins </p>
                    </div>
                    <div>
