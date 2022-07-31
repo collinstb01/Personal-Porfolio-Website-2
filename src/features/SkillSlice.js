@@ -64,43 +64,43 @@ const SkillSlice = createSlice({
   name: "skill",
   initialState: {
     posts: [],
-    message: "",
+    messageSkill: {},
     user: "",
     loading: true
   },
   reducers: {},
   extraReducers: {
     [createproject.pending]: () => {
-      return { message: "Pending" };
+      return { messageSkill: "Pending" };
     },
     [createproject.fulfilled]: (state, action) => {
-      return { ...state, message: action.payload, loading: false };
+      return { ...state, messageSkill: action.payload, loading: false };
     },
     [createproject.rejected]: (state) => {
-      return { ...state, message: "failed to retrieve the data" };
+      return { ...state, messageSkill: "failed to retrieve the data" };
     },
     [getposts.pending]: (state) => {
-      return { ...state, message: "collecting data", loading: true };
+      return { ...state, messageSkill: "collecting data", loading: true };
     },
     [getposts.fulfilled]: (state, action) => {
-      return { ...state, message: "sucessful", posts: action.payload, loading: false };
+      return { ...state, messageSkill: "sucessful", posts: action.payload, loading: false };
     },
     [getposts.rejected]: (state) => {
-      return { ...state, message: "failed to retrieve the data", loading: false };
+      return { ...state, messageSkill: "failed to retrieve the data", loading: false };
     },
     [login.pending]: (state) => {
-      return { ...state, message: "collecting data" };
+      return { ...state, messageSkill: "collecting data" };
     },
     [login.fulfilled]: (state, action) => {
       localStorage.setItem("authuser", JSON.stringify(action.payload));
-      return { ...state, message: "sucessful", user:JSON.stringify(action.payload) };
+      return { ...state, messageSkill: "sucessful", user:JSON.stringify(action.payload) };
     },
     [login.rejected]: (state) => {
-      return { ...state, message: "failed to retrieve the data" };
+      return { ...state, messageSkill: "failed to retrieve the data" };
     },
   },
 });
 
 export const getSkill = (state) => state.skill.skill;
-export const getMessage = (state) => state.message.message;
+export const getMessageSkill = (state) => state.messageSkill.messageSkill;
 export default SkillSlice.reducer;
