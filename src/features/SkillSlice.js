@@ -6,7 +6,7 @@ export const createproject = createAsyncThunk(
   async (formData) => {
     try {
       const response = await axios.post(
-        "https://personalporfolio2.herokuapp.com/api/post/createproject",
+        "https://fine-plum-sea-lion-cap.cyclic.app/api/post/createproject",
         formData
       );
       console.log(response.data);
@@ -22,7 +22,7 @@ export const createskill = createAsyncThunk(
   async (skillData) => {
     try {
       const response = await axios.post(
-        "https://personalporfolio2.herokuapp.com/api/post/createskill",
+        "https://fine-plum-sea-lion-cap.cyclic.app/api/post/createskill",
         skillData
       );
       console.log(response.data);
@@ -36,7 +36,7 @@ export const createskill = createAsyncThunk(
 export const getposts = createAsyncThunk("skils/getposts", async () => {
   try {
     const response = await axios.get(
-      "https://personalporfolio2.herokuapp.com/api/post/getposts"
+      "https://fine-plum-sea-lion-cap.cyclic.app/api/post/getposts"
     );
     console.log(response.data);
     return response.data;
@@ -49,14 +49,14 @@ export const login = createAsyncThunk(
   async ({ loginData, navigate }) => {
     try {
       const response = await axios.post(
-        "https://personalporfolio2.herokuapp.com/api/user/login",
+        "https://fine-plum-sea-lion-cap.cyclic.app/api/user/login",
         loginData
       );
       console.log(response.data);
       navigate("/postfortechsavvy");
       return response.data;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 );
@@ -66,7 +66,7 @@ const SkillSlice = createSlice({
     posts: [],
     messageSkill: {},
     user: "",
-    loading: true
+    loading: true,
   },
   reducers: {},
   extraReducers: {
@@ -83,17 +83,30 @@ const SkillSlice = createSlice({
       return { ...state, messageSkill: "collecting data", loading: true };
     },
     [getposts.fulfilled]: (state, action) => {
-      return { ...state, messageSkill: "sucessful", posts: action.payload, loading: false };
+      return {
+        ...state,
+        messageSkill: "sucessful",
+        posts: action.payload,
+        loading: false,
+      };
     },
     [getposts.rejected]: (state) => {
-      return { ...state, messageSkill: "failed to retrieve the data", loading: false };
+      return {
+        ...state,
+        messageSkill: "failed to retrieve the data",
+        loading: false,
+      };
     },
     [login.pending]: (state) => {
       return { ...state, messageSkill: "collecting data" };
     },
     [login.fulfilled]: (state, action) => {
       localStorage.setItem("authuser", JSON.stringify(action.payload));
-      return { ...state, messageSkill: "sucessful", user:JSON.stringify(action.payload) };
+      return {
+        ...state,
+        messageSkill: "sucessful",
+        user: JSON.stringify(action.payload),
+      };
     },
     [login.rejected]: (state) => {
       return { ...state, messageSkill: "failed to retrieve the data" };

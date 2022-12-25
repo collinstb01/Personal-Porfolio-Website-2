@@ -3,11 +3,11 @@ import axios from "axios";
 
 export const createblog = createAsyncThunk(
   "blogs/createblog",
-  async ({image, title, category, message}) => {
+  async ({ image, title, category, message }) => {
     try {
       const response = await axios.post(
-        "https://personalporfolio2.herokuapp.com/api/blogs/createblog",
-        {image, title, category, message}
+        "https://fine-plum-sea-lion-cap.cyclic.app/api/blogs/createblog",
+        { image, title, category, message }
       );
       console.log(response.data);
       return response.data;
@@ -20,7 +20,7 @@ export const createblog = createAsyncThunk(
 export const getblogs = createAsyncThunk("blogs/getblogs", async () => {
   try {
     const response = await axios.get(
-      "https://personalporfolio2.herokuapp.com/api/blogs/getblogs"
+      "https://fine-plum-sea-lion-cap.cyclic.app/api/blogs/getblogs"
     );
     console.log(response.data);
     return response.data;
@@ -31,8 +31,11 @@ export const getblogs = createAsyncThunk("blogs/getblogs", async () => {
 
 export const getblog = createAsyncThunk("blogs/getblog", async (id) => {
   try {
-    const response = await axios.get(`https://personalporfolio2.herokuapp.com/api/blogs/getblog/${id}`, id)
-    
+    const response = await axios.get(
+      `https://fine-plum-sea-lion-cap.cyclic.app/api/blogs/getblog/${id}`,
+      id
+    );
+
     console.log(response.data);
     return response.data;
   } catch (error) {
@@ -45,7 +48,7 @@ const BlogSlice = createSlice({
     blogs: [],
     blog: [],
     message: "",
-    loading: true
+    loading: true,
   },
   reducers: {},
   extraReducers: {
@@ -62,20 +65,38 @@ const BlogSlice = createSlice({
       return { ...state, message: "collecting data", loading: true };
     },
     [getblogs.fulfilled]: (state, action) => {
-      return { ...state, message: "sucessful", blogs: action.payload, loading: false };
+      return {
+        ...state,
+        message: "sucessful",
+        blogs: action.payload,
+        loading: false,
+      };
     },
     [getblogs.rejected]: (state) => {
-      return { ...state, message: "failed to retrieve the data", loading: false };
+      return {
+        ...state,
+        message: "failed to retrieve the data",
+        loading: false,
+      };
     },
     [getblog.pending]: (state) => {
       return { ...state, message: "collecting data", loading: true };
     },
     [getblog.fulfilled]: (state, action) => {
-      return { ...state, message: "sucessful", blog: action.payload, loading: false };
+      return {
+        ...state,
+        message: "sucessful",
+        blog: action.payload,
+        loading: false,
+      };
     },
     [getblog.rejected]: (state) => {
-      return { ...state, message: "failed to retrieve the data", loading: false };
-    }
+      return {
+        ...state,
+        message: "failed to retrieve the data",
+        loading: false,
+      };
+    },
   },
 });
 
